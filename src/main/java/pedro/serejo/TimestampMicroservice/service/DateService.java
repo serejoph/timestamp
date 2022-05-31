@@ -38,7 +38,7 @@ public class DateService {
 
 	private String convertToJson(LocalDateTime ldt, Long millis) {
 		String utc = ldt.atOffset(ZoneOffset.UTC).format(DateTimeFormatter.RFC_1123_DATE_TIME);
-		StringBuilder sb = new StringBuilder("{\"unix\":");
+		StringBuilder sb = new StringBuilder("{\"unix\":\"");
 		sb.append(millis);
 		sb.append("\",\"utc\":\"");
 		sb.append(utc);
