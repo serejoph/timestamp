@@ -1,8 +1,8 @@
 package pedro.serejo.TimestampMicroservice.service.parse;
 
-import java.time.Instant;
-import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Optional;
@@ -17,11 +17,9 @@ public class UtcParser extends DateParser {
 	public Optional<Long> parse(String date) {
 		try {
 			Locale.setDefault(Locale.US);
-			DateTimeFormatter customDTF = DateTimeFormatter.ofPattern("dd MMMM YYYY, O");
-			OffsetDateTime ldt = OffsetDateTime.parse(date, customDTF);
-
-			Instant i = ldt.toInstant();
-			return Optional.of(i.toEpochMilli());
+			
+			LocalDateTime ld = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd MMMM yyyy, O")).atStartOfDay();
+			return Optional.of(ld.toInstant(ZoneOffset.UTC).toEpochMilli());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Optional.empty();
