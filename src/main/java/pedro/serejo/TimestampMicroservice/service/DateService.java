@@ -52,9 +52,9 @@ public class DateService {
 		String utc = ldt.atOffset(ZoneOffset.UTC).format(DateTimeFormatter.RFC_1123_DATE_TIME);
 		Long unix = ldt.toEpochSecond(ZoneOffset.UTC) * 1000;
 
-		StringBuilder sb = new StringBuilder("{\"unix\":");
+		StringBuilder sb = new StringBuilder("{\"unix\":\"");
 		sb.append(unix);
-		sb.append(",\"utc\":\"");
+		sb.append("\",\"utc\":\"");
 		sb.append(utc);
 		sb.append("\"}");
 
