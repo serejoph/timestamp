@@ -1,6 +1,8 @@
 package pedro.serejo.TimestampMicroservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +20,15 @@ public class TimestampController {
 
 	@GetMapping("/{date}")
 	@ResponseBody
-	public String getTimestamp(@PathVariable(name = "date") String date) {
-		return dateService.convert(date);
+	public ResponseEntity<String> getTimestamp(@PathVariable(name = "date") String date) {
+		return ResponseEntity.status(HttpStatus.OK).body(dateService.convert(date));
 		
+
 	}
-	
+
 	@GetMapping()
-	public String currentTimestamp() {
-		return dateService.now();
+	public ResponseEntity<String> currentTimestamp() {
+		return ResponseEntity.status(HttpStatus.OK).body(dateService.now());
+		
 	}
 }
