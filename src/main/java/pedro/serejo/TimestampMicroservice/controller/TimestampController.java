@@ -31,7 +31,7 @@ public class TimestampController {
 		
 
 	}
-
+	@CrossOrigin
 	@GetMapping()
 	public ResponseEntity<String> currentTimestamp() {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(dateService.now());
