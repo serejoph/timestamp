@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pedro.serejo.TimestampMicroservice.service.DateService;
 
 @RestController
-@RequestMapping(value =  {"/api/timestamp", "/api"})
+@RequestMapping("/api")
 public class TimestampController {
 
 	@Autowired
