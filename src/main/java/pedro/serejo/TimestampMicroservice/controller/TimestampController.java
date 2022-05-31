@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pedro.serejo.TimestampMicroservice.service.DateService;
 
-
 @RestController
 @RequestMapping("/api")
 public class TimestampController {
@@ -23,18 +22,19 @@ public class TimestampController {
 	@GetMapping("/{date}")
 	@CrossOrigin
 	public ResponseEntity<String> getTimestamp(@PathVariable(name = "date") String date) {
-		
-		
+
 		String body = dateService.convert(date);
-		if (body == null) return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body("{\"error\":\"Invalid Date\"}");
+		if (body == null)
+			return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+					.body("{\"error\":\"Invalid Date\"}");
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(body);
-		
 
 	}
+
 	@CrossOrigin
 	@GetMapping()
 	public ResponseEntity<String> currentTimestamp() {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(dateService.now());
-		
+
 	}
 }
