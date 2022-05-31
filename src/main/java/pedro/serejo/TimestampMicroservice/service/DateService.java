@@ -63,7 +63,7 @@ public class DateService {
 
 	public String now() {
 		LocalDateTime ldt = LocalDateTime.now(ZoneOffset.UTC);
-		return convertToJson(ldt);
+		return convertToJson(ldt, System.currentTimeMillis());
 	}
 
 }
