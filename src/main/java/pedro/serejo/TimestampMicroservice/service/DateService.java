@@ -33,7 +33,7 @@ public class DateService {
 			
 		}
 
-		return "{\"error\":\"Invalid Date\"}";
+		return null;
 	}
 
 	private String convertToJson(LocalDateTime ldt, Long millis) {

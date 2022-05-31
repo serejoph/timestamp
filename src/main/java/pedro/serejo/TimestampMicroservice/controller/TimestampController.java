@@ -21,8 +21,14 @@ public class TimestampController {
 
 	@GetMapping("/{date}")
 	@ResponseBody
+	
+	
 	public ResponseEntity<String> getTimestamp(@PathVariable(name = "date") String date) {
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(dateService.convert(date));
+		
+		
+		String body = dateService.convert(date);
+		if (body == null) return ResponseEntity.status(HttpStatus.NOT_MODIFIED).contentType(MediaType.APPLICATION_JSON).body("{\"error\":\"Invalid Date\"}");
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(body);
 		
 
 	}
