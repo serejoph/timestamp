@@ -33,14 +33,14 @@ public class DateService {
 			
 		}
 
-		return "{ error : \"Invalid Date\" }";
+		return "{ \"error\" : \"Invalid Date\" }";
 	}
 
 	private String convertToJson(LocalDateTime ldt, Long millis) {
 		String utc = ldt.atOffset(ZoneOffset.UTC).format(DateTimeFormatter.RFC_1123_DATE_TIME);
 		StringBuilder sb = new StringBuilder("{\"unix\":");
 		sb.append(millis);
-		sb.append(",\"utc\":\"");
+		sb.append("\",\"utc\":\"");
 		sb.append(utc);
 		sb.append("\"}");
 
