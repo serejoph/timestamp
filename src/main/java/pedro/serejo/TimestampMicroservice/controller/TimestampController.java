@@ -27,7 +27,7 @@ public class TimestampController {
 		
 		
 		String body = dateService.convert(date);
-		if (body == null) return ResponseEntity.status(HttpStatus.NOT_MODIFIED).contentType(MediaType.APPLICATION_JSON).body("{\"error\":\"Invalid Date\"}");
+		if (body == null) return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body("{\"error\":\"Invalid Date\"}");
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(body);
 		
 
